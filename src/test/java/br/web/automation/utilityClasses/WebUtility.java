@@ -70,6 +70,10 @@ public class WebUtility {
         Assert.assertTrue(element.getText().contains(elementText));
     }
 
+    public static void validateTitlePage(String title) {
+        Assert.assertEquals(driver.getTitle(), title);
+    }
+
     public static WebElement findElementByText(String elementText) {
 
         return driver.findElement(By.xpath("//*[contains(text(),'" + elementText + "')]"));

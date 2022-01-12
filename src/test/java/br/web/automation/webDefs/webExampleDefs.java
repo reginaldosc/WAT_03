@@ -1,64 +1,39 @@
 package br.web.automation.webDefs;
 
+import br.web.automation.pageObjects.HomePage;
+import br.web.automation.pageObjects.ResultPage;
+import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
-import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.support.ui.WebDriverWait;
 import br.web.automation.utilityClasses.WebUtility;
 
 public class webExampleDefs {
 
     // Basic Required Variables
     private final WebDriver driver = WebUtility.getDriver();
-    private final WebDriverWait wait = WebUtility.getWait();
+    private HomePage homePage = new HomePage(driver);
+    private ResultPage resultPage = new ResultPage(driver);
 
-    @Given("I am in this Example Website")
-    public void something1() {
-        // Cucumber Given Method Implementation
-
+    @Given("user is in the {string} Website")
+    public void userIsInTheExampleWebsite(String site) {
         // Go to the Example Website
-        driver.get("https://demoqa.com/");
+        driver.get("http://www.google.com");
     }
 
-    @When("I go to the Example Form")
-    public void something2() {
-        // Cucumber When Method Implementation
-
-        // Click "Elements" Option
-        WebUtility.findElementByText("Elements").click();
-        WebUtility.validatePageUrl("elements");
-
-        // Click "Text Box" Option
-        WebUtility.findElementByText("Text Box").click();
-        WebUtility.validatePageUrl("text-box");
+    @When("user fills a search box with {string} Text")
+    public void userFillsASearchBoxWith(String text) {
+        homePage.fillTheSearchBox(text);
     }
 
-    @When("I fill the Example Form with {string} Name and {string} Email")
-    public void something3(String name, String email) {
-        // Cucumber When Method Implementation
-
-        // Write Full Name and Email
-        driver.findElement(By.id("userName")).sendKeys(name);
-        driver.findElement(By.id("userEmail")).sendKeys(email);
+    @And("user submits the Search")
+    public void userClicksOnSearchButton() {
+        homePage.clickSeach();
     }
 
-    @Then("I submit the Example Form")
-    public void something4() {
-        // Cucumber Then Method Implementation
-
-        // Click "Submit" Button
-        driver.findElement(By.id("submit")).click();
+    @Then("user is able to see the result {string} Page")
+    public void userIsAbleToSeeTheResults(String page) {
+        resultPage.checkPageTitle(page);
     }
-
-    @Then("I validate the Example Form")
-    public void something5() {
-        // Cucumber Then Method Implementation
-
-        // Validate Example Form Elements Text
-        WebUtility.validateElementTextContains(driver.findElement(By.id("name")), "Name:");
-        WebUtility.validateElementTextContains(driver.findElement(By.id("email")), "Email:");
-    }
-
 }
