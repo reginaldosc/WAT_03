@@ -1,7 +1,6 @@
 package br.web.automation.pageObjects;
 
 import org.junit.Assert;
-import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 
@@ -12,8 +11,6 @@ public class HomePage extends BasePOM{
 
     @FindBy(name = "btnK")
     public WebElement searchButton;
-
-
 
 
     public void fillTheSearchBox(String text) {
