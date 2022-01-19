@@ -10,8 +10,9 @@ public class BasePOM {
     private final WebDriver driver;
     private final WebDriverWait waitVar;
 
-    public BasePOM(WebDriver driver) {
-        this.driver = driver;
+    public BasePOM() {
+        this.driver = WebUtility.getDriver();
+
         waitVar = WebUtility.getWait();
         PageFactory.initElements(driver, this);
 

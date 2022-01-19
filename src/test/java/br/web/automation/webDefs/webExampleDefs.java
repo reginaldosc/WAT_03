@@ -13,8 +13,8 @@ public class webExampleDefs {
 
     // Basic Required Variables
     private final WebDriver driver = WebUtility.getDriver();
-    private HomePage homePage = new HomePage(driver);
-    private ResultPage resultPage = new ResultPage(driver);
+    private HomePage homePage = new HomePage();
+    private ResultPage resultPage = new ResultPage();
 
     @Given("user is in the {string} Website")
     public void userIsInTheExampleWebsite(String site) {

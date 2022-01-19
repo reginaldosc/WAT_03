@@ -6,8 +6,8 @@ import org.openqa.selenium.WebDriver;
 public class ResultPage extends BasePOM{
 
 
-    public ResultPage(WebDriver driver) {
-        super(driver);
+    public ResultPage() {
+
     }
 
     public void checkPageTitle(String title) {

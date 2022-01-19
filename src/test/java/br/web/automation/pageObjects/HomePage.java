@@ -13,9 +13,7 @@ public class HomePage extends BasePOM{
     @FindBy(name = "btnK")
     public WebElement searchButton;
 
-    public HomePage(WebDriver driver) {
-        super(driver);
-    }
+
 
 
     public void fillTheSearchBox(String text) {
