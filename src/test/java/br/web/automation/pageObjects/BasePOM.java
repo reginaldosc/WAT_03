@@ -7,8 +7,8 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 
 public class BasePOM {
 
-    private final WebDriver driver;
-    private final WebDriverWait waitVar;
+    protected final WebDriver driver;
+    protected final WebDriverWait waitVar;
 
     public BasePOM() {
         this.driver = WebUtility.getDriver();
