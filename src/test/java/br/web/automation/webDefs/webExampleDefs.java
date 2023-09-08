@@ -1,7 +1,7 @@
 package br.web.automation.webDefs;
 
-import br.web.automation.pageObjects.HomePage;
-import br.web.automation.pageObjects.ResultPage;
+import br.web.automation.pageObjects.LoginPage;
+import br.web.automation.pageObjects.InventoryPage;
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
@@ -13,27 +13,30 @@ public class webExampleDefs {
 
     // Basic Required Variables
     private final WebDriver driver = WebUtility.getDriver();
-    private HomePage homePage = new HomePage();
-    private ResultPage resultPage = new ResultPage();
+    private LoginPage loginPage = new LoginPage();
+    private InventoryPage inventoryPage = new InventoryPage();
 
     @Given("user is in the {string} Website")
     public void userIsInTheExampleWebsite(String site) {
         // Go to the Example Website
-        driver.get("http://www.google.com");
+        driver.get(site);
     }
 
-    @When("user fills a search box with {string} Text")
-    public void userFillsASearchBoxWith(String text) {
-        homePage.fillTheSearchBox(text);
+    @When("user fills username and password with {string} and {string}")
+    public void userFillsUsernameAndPassword(String username, String password) {
+        loginPage.fillLogin(username, password);
     }
 
-    @And("user submits the Search")
-    public void userClicksOnSearchButton() {
-        homePage.clickSeach();
+    @And("user submits the login")
+    public void userSubmitsTheLogin() {
+        loginPage.login();
     }
 
-    @Then("user is able to see the result {string} Page")
-    public void userIsAbleToSeeTheResults(String page) {
-        resultPage.checkPageTitle(page);
+    @Then("user is redirected to {string} Page")
+    public void userIsAbleToSeePage(String page) {
+        if (page.equals("inventory")) {
+            inventoryPage.checkInventoryPage();
+        }
     }
+
 }

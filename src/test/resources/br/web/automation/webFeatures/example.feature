@@ -1,10 +1,10 @@
-Feature: Web Google Search
+Feature: Swag Labs Login
   As an user I can:
-  -> Go to Google's website
-  -> And Do a search
+  -> Go to Sauce Demo's website
+  -> And Do a login
 
-  Scenario: TC-01 - Do a Search
-    Given user is in the "http://google.com" Website
-    When  user fills a search box with "google" Text
-    And   user submits the Search
-    Then  user is able to see the result "google - Pesquisa Google" Page
+  Scenario: TC-01 - Do a Login
+    Given user is in the "https://www.saucedemo.com/" Website
+    When  user fills username and password with "standard_user" and "secret_sauce"
+    And   user submits the login
+    Then  user is redirected to "inventory" Page

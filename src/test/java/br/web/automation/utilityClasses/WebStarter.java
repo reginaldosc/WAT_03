@@ -18,7 +18,11 @@ public class WebStarter {
     public void closeWebBrowser(Scenario scenario) {
 
         if (scenario.isFailed()) {
-            WebUtility.takeScreenshot(scenario.getId());
+            try {
+                WebUtility.takeScreenshot(scenario.getId());
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
         }
 
         // Close the Web Browser
